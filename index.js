@@ -13,15 +13,10 @@ var r_special_char = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/
 var r_mala_l = /[a-z]/
 var r_duza_l = /[A-Z]/
 
-// var dlugosc = "jest dlugie"
-// var cyfry = "ma cyfry"
-
 app.post('/example', (req, res) => {
-  //res.send(`Twoje haslo to :${req.body.password}.`);
   if (req.body.password.length >= 8){
-    //res.send(`Twoje haslo ma ponad 8 znakow - good!`);
     dlugosc = "Twoje haslo ma przynajmniej 8 znaków - tak"
-  }else if(req.body.password.length < 8){
+  }else{
     dlugosc = "Twoje haslo ma przynajmniej 8 znaków - nie"
   }
   
@@ -49,7 +44,6 @@ app.post('/example', (req, res) => {
     duza_l = "Twoje haslo zawiera wielką literę - nie"
   }
 
-  //res.send(dlugosc + '\n' + cyfry);
   res.render('index', { title: 'Hey', dlugosc: dlugosc, cyfry: cyfry, special: special, mala_l:mala_l, duza_l:duza_l})
 });
 
